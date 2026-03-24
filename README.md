@@ -2,11 +2,11 @@
 
 # ADAD - Vulnérabilité territoriale
 
-## 🎯 Objectif
+## Objectif
 
 Identifier les départements français où le vieillissement s’accompagne de vulnérabilités sociales et d’un accès limité aux soins.
 
-## 🚀 Lancer le projet
+## Lancer le projet
 
 ### 1. Installer les dépendances
 
@@ -15,7 +15,7 @@ pip install -r requirements.txt
 ### 2. Télécharger les données
 
 Les données sont disponibles ici :
-👉 COLLE TON LIEN GOOGLE DRIVE ICI
+https://drive.google.com/drive/folders/1VV4XEStsOw9SIlIXcNDCecHqcJGBuBma?usp=share_link
 
 ### 3. Placer les fichiers dans un dossier `data/`
 
@@ -23,7 +23,7 @@ Les données sont disponibles ici :
 
 streamlit run app.py
 
-## 🧠 Méthodologie
+## Méthodologie
 
 Nous combinons 3 dimensions :
 
@@ -36,13 +36,13 @@ Un indice de vulnérabilité est construit :
 * version simple (pondération égale)
 * version avancée (PCA)
 
-## 📊 Fonctionnalités
+## Fonctionnalités
 
 * Cartes interactives
 * Indice global de vulnérabilité
 * Analyse des écarts social vs soins
 * PCA
 
-## 👥 Auteurs
+## Auteurs
 
 * Elisa Bon Garance Pares et Elyne Cameriano
