@@ -15,7 +15,7 @@ st.markdown("Projet de Elisa Bon, Garance Pares et Elyne Cameriano")
 # ---------- Loaders ----------
 @st.cache_data
 def load_iris_shp():
-    gdf = gpd.read_file("CONTOURS-IRIS_2018.shp")
+    gdf = gpd.read_file("data/CONTOURS-IRIS_2018.shp")
     # code dept
     gdf["CODE_DEPT"] = gdf["INSEE_COM"].astype(str).str.zfill(5).str[:2]
     # fix invalid geometries
@@ -27,7 +27,7 @@ def load_iris_shp():
 
 @st.cache_data
 def load_isolement():
-    df = pd.read_csv("insee_menage_isolement_dep.csv")
+    df = pd.read_csv("data/insee_menage_isolement_dep.csv")
     return df
 
 gdf_dept = load_iris_shp()
@@ -57,14 +57,14 @@ def make_map_isolement():
 
 @st.cache_data
 def load_vuln():
-    df = pd.read_csv("vulnerabilite_socioeco_dep.csv")
+    df = pd.read_csv("data/vulnerabilite_socioeco_dep.csv")
     return df
 
 df_vuln = load_vuln()
 
 
 def make_map_pauvrete():
-    df_vuln = pd.read_csv("vulnerabilite_socioeco_dep.csv")
+    df_vuln = pd.read_csv("data/vulnerabilite_socioeco_dep.csv")
     gdf = gdf_dept.merge(df_vuln, left_on="CODE_DEPT", right_on="Departement", how="inner")
     fig, ax = plt.subplots(figsize=(15, 12))
     gdf.plot(
@@ -86,7 +86,7 @@ def make_map_pauvrete():
 
 
 def make_map_acces_soins():
-    acces_medecin = pd.read_csv("acces_soins_dep.csv")
+    acces_medecin = pd.read_csv("data/acces_soins_dep.csv")
 
     
     gdf = gdf_dept.merge(acces_medecin, left_on="CODE_DEPT", right_on="departement", how="inner")
@@ -113,21 +113,21 @@ def make_map_acces_soins():
 
 @st.cache_data
 def load_isolement():
-    df = pd.read_csv("insee_menage_isolement_dep.csv")
+    df = pd.read_csv("data/insee_menage_isolement_dep.csv")
     df = df.drop(columns=[c for c in ["Unnamed: 0"] if c in df.columns])
     df["Departement"] = df["Departement"].astype(str).str.zfill(2)
     return df
 
 @st.cache_data
 def load_vuln():
-    df = pd.read_csv("vulnerabilite_socioeco_dep.csv")
+    df = pd.read_csv("data/vulnerabilite_socioeco_dep.csv")
     df = df.drop(columns=[c for c in ["Unnamed: 0"] if c in df.columns])
     df["Departement"] = df["Departement"].astype(str).str.zfill(2)
     return df
 
 @st.cache_data
 def load_acces_soins():
-    df = pd.read_csv("acces_soins_dep.csv")
+    df = pd.read_csv("data/acces_soins_dep.csv")
     df = df.drop(columns=[c for c in ["Unnamed: 0"] if c in df.columns])
     df["departement"] = df["departement"].astype(str).str.zfill(2)
     return df
@@ -200,7 +200,7 @@ def make_map_vulnerabilite_totale():
 
 @st.cache_data
 def load_age_dep_from_iris():
-    df = pd.read_csv("insee_population_age_iris.csv")
+    df = pd.read_csv("data/insee_population_age_iris.csv")
 
     # Sécuriser types
     for c in ["POP_TOTALE","POP_0_14","POP_15_29","POP_30_59","POP_60_74","POP_75_PLUS"]:
@@ -266,7 +266,7 @@ def make_map_age_moyen():
 
 @st.cache_data
 def load_hopitaux_dep():
-    df = pd.read_csv("hopitaux_clean_et_stats.csv")
+    df = pd.read_csv("data/hopitaux_clean_et_stats.csv")
 
     # On garde les lignes hôpital (au cas où il y a d'autres types)
     if "TYPE_LIGNE" in df.columns:
