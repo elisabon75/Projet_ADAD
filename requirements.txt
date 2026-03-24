@@ -1,0 +1,6 @@
+streamlit
+pandas
+geopandas
+matplotlib
+scikit-learn
+mapclassify
